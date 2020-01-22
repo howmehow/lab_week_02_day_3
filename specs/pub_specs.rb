@@ -22,6 +22,11 @@ class TestPub < Minitest::Test
     @drink3 = Drink.new("Whiskey", 8, 8)
     drinks = [@drink1, @drink2, @drink3]
     @pub = Pub.new("Codeclan", 250, drinks)
+    food = [@food1, @food2, @food3]
+    @food1 = Food.new("Pizza", 10, -10)
+    @food2 = Food.new("Chips", 6, -5)
+    @food3 = Food.new("Fish and Chips", 15, -8)
+
 
   end
 
@@ -46,8 +51,36 @@ class TestPub < Minitest::Test
     assert_equal(1495, @customer1.cash)
     assert_equal(255, @pub.till)
     assert_equal(5, @customer1.drunkeness_lvl)
+
   end
 
+  def test_sell_food
+    @pub.sell_food(@customer1, @food1)
+    assert_equal(1490, @customer1.cash)
+    assert_equal(260, @pub.till)
+    assert_equal(-10, @customer1.drunkeness_lvl)
+
+  end
+
+  def test_is_customer_drunk
+    @pub.sell_drink(@customer3, @drink3)
+    @pub.sell_drink(@customer3, @drink3)
+    @pub.sell_drink(@customer3, @drink3)
+    @pub.sell_drink(@customer3, @drink3)
+    customer_allowed = @pub.allowed_to_sell(@customer3, @drink3)
+    assert_equal(false, customer_allowed)
+  end
+
+  def test_is_everything_working
+    @pub.sell_drink(@customer3, @drink3)
+    @pub.sell_drink(@customer3, @drink1)
+    @pub.sell_food(@customer3, @food1)
+    @pub.sell_food(@customer3, @food1)
+    @pub.sell_drink(@customer3, @drink3)
+    customer_allowed = @pub.allowed_to_sell(@customer3, @drink3)
+    
+    assert_equal(true, customer_allowed)
+  end
 
 
 end

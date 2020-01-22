@@ -12,8 +12,15 @@ end
   def reduce_customer_money(drink)
     @cash -= drink.price
   end
+  def reduce_customer_money(food)
+    @cash -= food.price
+  end
 
   def increase_drunkeness(drink)
     @drunkeness_lvl += drink.alcohol_level
+  end
+
+  def increase_rejuvenation(food)
+    @drunkeness_lvl += food.rejuvenation_level
   end
 end

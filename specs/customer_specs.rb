@@ -4,6 +4,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../customer.rb')
 require_relative('../drink.rb')
+require_relative('../food.rb')
 
 class TestCustomer < Minitest::Test
 
@@ -13,6 +14,9 @@ class TestCustomer < Minitest::Test
     @customer3 = Customer.new("Maria", 20, 10000)
     @drink = Drink.new("Beer", 7, 7)
     @drink1 = Drink.new("Coke", 3, 0)
+    @food1 = Food.new("Pizza", 10, -10)
+    @food2 = Food.new("Chips", 6, -5)
+    @food3 = Food.new("Fish and Chips", 15, -8)
 
   end
 
@@ -39,5 +43,10 @@ class TestCustomer < Minitest::Test
 
   end
 
+  def test_increase_rejuvenation
+
+    @customer3.increase_rejuvenation(@food1)
+    assert_equal(-10, @customer3.drunkeness_lvl)
+  end
 
 end
