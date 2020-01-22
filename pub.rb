@@ -4,9 +4,7 @@ def initialize(name, till, drinks)
   @name = name
   @till = till
   @drinks = drinks
-
 end
-
 
   def increase_till(drink)
     @till += drink.price
@@ -27,10 +25,12 @@ end
       customer.reduce_customer_money(drink)
       customer.increase_drunkeness(drink)
       increase_till(drink)
+      remove_drink_from_stock(drink)
     else
       return nil
     end
   end
+
   def sell_food(customer, food)
     if customer.cash >= food.price &
       customer.reduce_customer_money(food)
@@ -41,8 +41,7 @@ end
     end
   end
 
-  # def is_customer
-  # end
-
-
+  def remove_drink_from_stock(drink)
+    return drink.stock_count -= 1
+  end
 end

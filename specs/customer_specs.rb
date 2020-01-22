@@ -44,7 +44,6 @@ class TestCustomer < Minitest::Test
   end
 
   def test_increase_rejuvenation
-
     @customer3.increase_rejuvenation(@food1)
     assert_equal(-10, @customer3.drunkeness_lvl)
   end

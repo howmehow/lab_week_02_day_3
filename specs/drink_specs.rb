@@ -17,5 +17,4 @@ class TestDrink < Minitest::Test
     assert_equal("Coke", @drink1.name)
   end
 
-
 end

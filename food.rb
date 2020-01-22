@@ -8,5 +8,4 @@ class Food
     @rejuvenation_level = rejuvenation_level
   end
 
-  
 end

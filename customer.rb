@@ -9,11 +9,8 @@ def initialize(name, age, cash)
   @drunkeness_lvl = 0
 end
 
-  def reduce_customer_money(drink)
-    @cash -= drink.price
-  end
-  def reduce_customer_money(food)
-    @cash -= food.price
+  def reduce_customer_money(product)
+    @cash -= product.price
   end
 
   def increase_drunkeness(drink)
