@@ -41,12 +41,12 @@ class TestPub < Minitest::Test
     assert_equal(false, drink_to_sell)
   end
 
-  # def test_sell_drink
-  #   @pub.sell_drink(@customer1, @drink2)
-  #   assert_equal(1495, @customer1.cash)
-  #   assert_equal(255, @pub.till)
-  #   assert_equal(5, @customer1.drunkeness_lvl)
-  # end
+  def test_sell_drink
+    @pub.sell_drink(@customer1, @drink2)
+    assert_equal(1495, @customer1.cash)
+    assert_equal(255, @pub.till)
+    assert_equal(5, @customer1.drunkeness_lvl)
+  end
 
 
 
